@@ -1,6 +1,6 @@
 {
   "name": "@kelcho-spense/node-copy-clean",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A CLI tool to copy directories while automatically excluding node_modules folders",
   "author": "Kevin Comba Gatimu",
   "private": false,
