@@ -2,6 +2,8 @@
 
 A command-line utility to copy directories while automatically excluding `node_modules` folders, built with NestJS. This tool provides efficient directory copying with a progress bar and multi-threaded operations for improved performance.
 
+![1746887011743](image/README/1746887011743.png)
+
 ## Features
 
 - Copy directories while skipping all `node_modules` folders
@@ -37,6 +39,7 @@ node-copy-clean -i
 ```
 
 ### Options
+
 - `-i, --interactive`: Run in interactive mode
 - `-v, --verbose`: Enable verbose logging
 - `-h, --help`: Show help information
@@ -52,7 +55,6 @@ Would you like to copy more files? (y/n)
 
 - Answer `y` or `yes` to continue with another copy operation
 - Answer `n` or any other input to exit the tool
-
 
 ## Development
 
