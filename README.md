@@ -67,14 +67,79 @@ npm run build
 ### Running in Development
 
 ```bash
-npm run start:dev -- <source-directory> <destination-directory>
+npm run start:dev -- "C:\path\to\source" "C:\path\to\destination"
 ```
 
-### Testing
+Or alternatively:
+
+```bash
+npm run cli -- "C:\path\to\source" "C:\path\to\destination"
+```
+
+ **with verbose logging** :
+
+```bash
+npm run start:dev -- "C:\path\to\source" "C:\path\to\destination" --verbose
+```
+
+### Running in Production
+
+build the project first
+
+```bash
+npm run build
+```
+
+run the project
+
+```
+npm run cli -- "C:\path\to\source" "C:\path\to\destination"
+```
+
+## Running Tests
+
+To run the unit tests:
+
+**npm** **test**
 
 ```bash
 npm test
 ```
+
+To watch tests during development:
+
+```bash
+npm run test:watch
+```
+
+To run end-to-end tests:
+
+```bash
+npm run test:e2e
+```
+
+## Quick Test with Sample Directories
+
+Create test directories to verify functionality:
+
+```bash
+# Create test directories
+mkdir -p test-source/project1/node_modules
+mkdir -p test-source/project2/node_modules
+
+# Add some test files
+echo "content" > test-source/file1.txt
+echo "content" > test-source/project1/file2.txt
+echo "content" > test-source/project1/node_modules/should-be-skipped.txt
+
+# Run the tool
+npm run start:dev -- "./test-source" "./test-destination" --verbose
+
+# Verify the results
+dir test-destination
+```
+
+This should copy everything except the [node_modules](vscode-file://vscode-app/c:/Users/KevinComba/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html) directories.
 
 ## Command-line Interface
 
