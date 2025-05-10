@@ -41,6 +41,28 @@ Options:
   --verbose      Enable verbose logging                                 [boolean]
 ```
 
+## Run the CLI tool in
+
+* **Interactive mode:** Will prompt for source, destination, and verbose option
+
+```bash
+npm run cli -- --interactive
+# or simply
+npm run cli -- -i
+```
+
+* **Direct mode:** when no arguments provided, automatically goes to `interactive mode`:
+
+```bash
+npm run cli
+```
+
+* **Traditional argument mode** :
+
+```bash
+npm run cli -- "C:\path\to\source" "C:\path\to\destination" --verbose
+```
+
 ## Development
 
 ### Setup
@@ -80,20 +102,6 @@ npm run cli -- "C:\path\to\source" "C:\path\to\destination"
 
 ```bash
 npm run start:dev -- "C:\path\to\source" "C:\path\to\destination" --verbose
-```
-
-### Running in Production
-
-build the project first
-
-```bash
-npm run build
-```
-
-run the project
-
-```
-npm run cli -- "C:\path\to\source" "C:\path\to\destination"
 ```
 
 ## Running Tests
