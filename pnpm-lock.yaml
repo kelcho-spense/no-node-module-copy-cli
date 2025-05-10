@@ -23,6 +23,9 @@ importers:
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
+      yargs:
+        specifier: ^17.7.2
+        version: 17.7.2
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.2.0
@@ -75,9 +78,6 @@ importers:
       typescript-eslint:
         specifier: ^8.20.0
         version: 8.32.0(eslint@9.26.0)(typescript@5.8.3)
-      yargs:
-        specifier: ^17.7.2
-        version: 17.7.2
 
 packages:
 
