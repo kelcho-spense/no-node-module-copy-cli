@@ -5,6 +5,7 @@ import { AppModule } from './app.module';
 import { CopyService } from './copy.service';
 import * as readline from 'readline';
 import * as yargs from 'yargs';
+import * as colors from 'colors';
 
 async function prompt(question: string): Promise<string> {
   const rl = readline.createInterface({
@@ -48,15 +49,13 @@ async function bootstrap() {
 
     while (continueRunning) {
       let source: string;
-      let destination: string;
-
-      // If interactive mode or no arguments provided, prompt for inputs
+      let destination: string;      // If interactive mode or no arguments provided, prompt for inputs
       if (argv.interactive || argv._.length < 2) {
-        console.log('=== No Node Module Copy CLI ===');
-        source = await prompt('Source directory? ');
-        destination = await prompt('Destination directory? ');
+        console.log(colors.cyan.bold('\n=== No Node Module Copy CLI ==='));
+        source = await prompt(colors.yellow('Source directory? '));
+        destination = await prompt(colors.yellow('Destination directory? '));
 
-        const verbose = (await prompt('Enable verbose logging? (y/n) ')).toLowerCase() === 'y';
+        const verbose = (await prompt(colors.yellow('Enable verbose logging? (y/n) '))).toLowerCase() === 'y';
         if (verbose) argv.verbose = true;
       } else {
         // Get source and destination from arguments
@@ -72,16 +71,15 @@ async function bootstrap() {
       }
 
       // Perform the copy operation
-      await copyService.copyDirectory(source, destination);
-
-      console.log('Copy completed successfully!');
+      await copyService.copyDirectory(source, destination);      // No need for this message as we're already showing it in the service
+      // with better formatting
 
       // Ask if the user wants to copy again
-      const copyAgain = (await prompt('Would you like to copy more files? (y/n) ')).toLowerCase();
+      const copyAgain = (await prompt(colors.yellow('\nWould you like to copy more files? (y/n) '))).toLowerCase();
       continueRunning = copyAgain === 'y' || copyAgain === 'yes';
     }
 
-    console.log('Thank you for using No Node Module Copy CLI!');
+    console.log(colors.cyan.bold('\nThank you for using No Node Module Copy CLI! 👋'));
   } catch (error) {
     console.error('Error during file copy:', error);
     process.exit(1);

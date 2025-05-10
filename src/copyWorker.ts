@@ -9,16 +9,14 @@ try {
     const destDir = path.dirname(destination);
     if (!fs.existsSync(destDir)) {
         fs.mkdirSync(destDir, { recursive: true });
-    }
-
-    // Perform file copying
+    }    // Perform file copying
     fs.copyFileSync(source, destination);
 
     // Send a message back to the parent thread with progress
-    parentPort?.postMessage({ progress: 1, file: source });
+    parentPort?.postMessage({ progress: 1, file: source, size: fs.statSync(source).size });
 } catch (err) {
     console.error(`Error copying file ${source} to ${destination}:`, err);
-    parentPort?.postMessage({ progress: 0, error: err.message, file: source });
+    parentPort?.postMessage({ progress: 0, error: err.message, file: source, size: 0 });
 } finally {
     // Notify the parent thread that the worker has finished
     parentPort?.close();
