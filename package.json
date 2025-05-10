@@ -1,10 +1,13 @@
 {
-  "name": "node-copy-clean",
+  "name": "@kelcho-spense/node-copy-clean",
   "version": "0.0.3",
   "description": "A CLI tool to copy directories while automatically excluding node_modules folders",
   "author": "Kevin Comba Gatimu",
   "private": false,
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "bin": {
     "node-copy-clean": "./dist/main.js"
   },
@@ -62,7 +65,9 @@
     "release": "git push && git push --tags",
     "preversion": "node scripts/update-docs.js",
     "prepare-ci": "npm install --package-lock-only && git add package-lock.json",
-    "ci": "npm ci && npm run build"
+    "ci": "npm ci && npm run build",
+    "setup-auth": "node scripts/npm-auth.js",
+    "publish:npm": "npm publish --access=public"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",

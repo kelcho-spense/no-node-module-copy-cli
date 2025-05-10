@@ -1,4 +1,4 @@
-name: Publish Package to npm
+﻿name: Publish Package to npm
 
 on:
   push:
@@ -45,11 +45,29 @@ jobs:
 
       - name: Run linting
         run: pnpm run lint --if-present
-
+        
       - name: Run tests
         run: pnpm test --if-present
 
-      - name: Publish to npm
+      # First publish to GitHub Packages
+      - name: Publish to GitHub Packages
         run: pnpm publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Then publish to npm registry
+      - name: Setup Node.js for npm registry
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update package.json for npm
+        run: |
+          # Temporarily remove GitHub Packages config for npm publish
+          sed -i 's|"publishConfig": {"registry": "https://npm.pkg.github.com"},||g' package.json
+        
+      - name: Publish to npm registry
+        run: pnpm publish --no-git-checks --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
