@@ -88,12 +88,11 @@ npm install --save yargs
 ### Implementation Details
 
 1. The CLI entry point is configured in `main.ts`:
+
    - Uses NestJS application context for dependency injection
    - Parses command-line arguments with yargs
    - Passes arguments to the `CopyService`
-
 2. Worker Threads handle file copying in parallel for better performance
-
 3. A progress bar shows real-time copying status
 
 ### CLI Command Entry Point
@@ -189,48 +188,6 @@ npm run test:e2e
 
 # Run with coverage
 npm run test:cov
-```
-
-### Continuous Integration
-
-Set up CI/CD to automate testing and building:
-
-1. Create GitHub Actions workflow file (`.github/workflows/ci.yml`):
-
-```yaml
-name: CI
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-    - name: Install dependencies
-      run: npm ci
-    - name: Run linting
-      run: npm run lint
-    - name: Run tests
-      run: npm test
-    - name: Build
-      run: npm run build
-    - name: Build executables
-      run: npm run build:exe
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: executables
-        path: dist-exe/
 ```
 
 ### Adding Features
