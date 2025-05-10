@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
+import { CopyService } from './copy.service';
 
 @Module({
   imports: [],
   controllers: [],
-  providers: [],
+  providers: [CopyService],
 })
-export class AppModule {}
+export class AppModule { }

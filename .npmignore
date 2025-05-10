@@ -1,0 +1,33 @@
+# Source code
+src/
+test/
+
+# Configuration files
+tsconfig.json
+tsconfig.build.json
+nest-cli.json
+eslint.config.mjs
+.eslintrc.js
+.prettierrc
+jest.config.js
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Git related
+.git/
+.gitignore
+.github/
+
+# Temp files
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# Build artifacts not needed for distribution
+coverage/
+dist-exe/
+node_modules/

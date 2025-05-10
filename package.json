@@ -1,10 +1,21 @@
 {
   "name": "no-node-module-copy-cli",
   "version": "0.0.1",
-  "description": "",
+  "description": "A CLI tool to copy directories while automatically excluding node_modules folders",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "bin": {
+    "no-node-module-copy": "./dist/main.js"
+  },
+  "pkg": {
+    "targets": [
+      "node18-win-x64",
+      "node18-linux-x64",
+      "node18-macos-x64"
+    ],
+    "outputPath": "dist-exe"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -17,7 +28,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "cli": "node dist/main",
+    "pkg": "pkg .",
+    "build:exe": "nest build && pkg .",
+    "link": "npm link"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
