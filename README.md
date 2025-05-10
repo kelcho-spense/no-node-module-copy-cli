@@ -43,12 +43,37 @@ Options:
 
 ## Run the CLI tool in
 
-* **Interactive mode:** Will prompt for source, destination, and verbose option
+- **Interactive mode:** Will prompt for source, destination, and verbose option
 
 ```bash
 npm run cli -- --interactive
 # or simply
 npm run cli -- -i
+```
+
+### Multiple Copy Operations
+
+After successfully copying files, the CLI will ask if you want to copy more files. This allows you to perform multiple copy operations in a single session without having to restart the tool.
+
+```bash
+Copy completed successfully!
+Would you like to copy more files? (y/n)
+```
+
+- Answer `y` or `yes` to continue with another copy operation
+- Answer `n` or any other input to exit the tool
+
+### Multiple Copy Operations
+
+After successfully copying files, the CLI will ask if you want to copy more files. This allows you to perform multiple copy operations in a single session without having to restart the tool.
+
+```
+Copy completed successfully!
+Would you like to copy more files? (y/n)
+```
+
+* Answer `y` or `yes` to continue with another copy operation
+* Answer `n` or any other input to exit the tool
 ```
 
 * **Direct mode:** when no arguments provided, automatically goes to `interactive mode`:
@@ -152,11 +177,6 @@ This should copy everything except the [node_modules](vscode-file://vscode-app/c
 ## Command-line Interface
 
 The command-line interface is built using [yargs](https://github.com/yargs/yargs) with NestJS integration:
-
-```powershell
-# Install yargs if not already installed
-npm install --save yargs
-```
 
 ### Implementation Details
 
