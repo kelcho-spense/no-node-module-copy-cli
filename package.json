@@ -60,7 +60,9 @@
     "version:minor": "npm version minor",
     "version:major": "npm version major",
     "release": "git push && git push --tags",
-    "preversion": "node scripts/update-docs.js"
+    "preversion": "node scripts/update-docs.js",
+    "prepare-ci": "npm install --package-lock-only && git add package-lock.json",
+    "ci": "npm ci && npm run build"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
