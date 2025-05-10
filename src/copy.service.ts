@@ -58,7 +58,8 @@ export class CopyService {
                     }
 
                     // If all workers are done, resolve the promise
-                    if (completedWorkers === files.length) {                        this.progressBar.stop();
+                    if (completedWorkers === files.length) {
+                        this.progressBar.stop();
                         console.log('\n');
                         if (errors > 0) {
                             console.log(colors.red(`✖ Completed with ${errors} errors.`));
@@ -73,7 +74,7 @@ export class CopyService {
                 return worker;
             });
         });
-    }    private initializeProgressBar(totalFiles: number) {
+    } private initializeProgressBar(totalFiles: number) {
         this.progressBar = new cliProgress.SingleBar({
             format: '\x1b[36m[{bar}] {percentage}% | ETA: {eta}s | {value}/{total} files | {speed} files/s | {file}\x1b[0m',
             barCompleteChar: '\u2588',
@@ -93,7 +94,7 @@ export class CopyService {
             // Calculate speed automatically
             this.progressBar.increment({ file: filename });
         }
-    }private getFilesToCopy(source: string, basePath = '', destBase = '') {
+    } private getFilesToCopy(source: string, basePath = '', destBase = '') {
         let files: { source: string, destination: string }[] = [];
         const sourceBase = basePath || source;
         const destinationBase = destBase || source;
